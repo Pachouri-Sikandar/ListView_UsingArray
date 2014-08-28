@@ -15,8 +15,6 @@ public class ListActivityy extends Activity {
 
 ListView lv;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +26,16 @@ ListView lv;
         ArrayAdapter<String> ad = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, Likes);
 
         lv.setAdapter(ad);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int itemPosition = position + 1;  // Array indexing starts from 0..so while showing position user should get actual position of item...
+                String itemText = (String) lv.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), "Item's Position: "+itemPosition+" and Item is: "+itemText, Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 
 
